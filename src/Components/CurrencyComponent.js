@@ -1,14 +1,15 @@
 import './CurrencyComponent.css'
 
-const CurrencyComponent=()=>{
+const CurrencyComponent=(props)=>{
+    const {currencyChoice,selectCurrency,changeCurrency,amount,onChangeAmount} = props
     return(
         <div className = 'currency'>
-            <select>
-                <option value='THB'>THB</option>
-                <option value='USD'>USD</option>
-                <option value='EUR'>EUR</option>
+            <select value={selectCurrency} onChange={changeCurrency}>
+                {currencyChoice.map((choice)=>{
+                   return <option key={choice} value={choice}>{choice}</option>
+                })}
             </select>
-            <input type = 'number'/>
+            <input type = 'number' value = {amount} onChange={onChangeAmount}/>
         </div>
     );
 }
